@@ -2232,6 +2232,7 @@ static bool ggml_cuda_match_shared_expert(const ggml_cgraph * graph, int routed_
             !ggml_cuda_should_fuse_mul_mat(up, gate, routed) ||
             !ggml_cuda_should_fuse_mul_mat(shared_up, shared_gate, shared) ||
             !up->src[0]->buffer ||
+            !ggml_backend_buft_is_cuda(up->src[0]->buffer->buft) ||
             !ggml_is_quantized(up->src[0]->type)) {
         return false;
     }
