@@ -245,6 +245,7 @@ static __device__ __forceinline__ void qwen4_hc_combine_norm_body(const qwen4_hc
     }
 }
 
+__launch_bounds__(QWEN4_HC_K1_THREADS, 1)
 static __global__ void qwen4_hc_combine_norm_f32(const qwen4_hc_k1_args a) {
     qwen4_hc_combine_norm_body(a, blockIdx.x, blockIdx.y);
 }
